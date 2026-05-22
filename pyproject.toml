@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-lead-finder"
+version = "0.1.0"
+description = "Python SDK for the Local Lead Finder Apify actor — find local businesses on YellowPages and auto-enrich every lead with a 0-100 lead score, website tech stack, real emails, phone E.164, chain detection, brand age, mobile + SEO audit, and an industry-specific outreach pitch."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "ApiVault Labs" }]
+keywords = [
+    "local-lead-generation", "local-business-scraper", "yellowpages-scraper",
+    "lead-finder-api", "web-agency-leads", "seo-leads", "local-seo-leads",
+    "cold-outreach-leads", "business-without-website",
+    "website-tech-stack", "wix-detection", "wordpress-detection",
+    "shopify-detection", "email-scraper", "phone-scraper",
+    "lead-scoring", "lead-tier", "outreach-automation",
+    "chain-detection", "mobile-audit", "seo-audit",
+    "brand-age-wayback", "crm-export",
+    "hubspot-import", "pipedrive-import", "salesforce-import",
+    "apollo-alternative", "zoominfo-alternative", "hunter-alternative",
+    "web-scraping", "apify", "apify-actor", "python-sdk",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Office/Business",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/apivault-labs/local-lead-finder-python"
+Documentation = "https://github.com/apivault-labs/local-lead-finder-python#readme"
+"Apify Actor" = "https://apify.com/apivault_labs/local-business-lead-finder"
+"Bug Tracker" = "https://github.com/apivault-labs/local-lead-finder-python/issues"
+
+[tool.setuptools.packages.find]
+include = ["local_lead_finder*"]
