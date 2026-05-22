@@ -10,7 +10,7 @@ This client forwards inputs, polls until the run finishes, then
 downloads the dataset and splits it into per-lead records and the
 optional aggregate summary.
 
-Pricing: $2 per 1,000 leads (= $0.002/lead). All enrichment included.
+Pricing: $4 per 1,000 leads (= $0.004/lead). All enrichment included.
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ APIFY_API_BASE = "https://api.apify.com/v2"
 TERMINAL_OK = {"SUCCEEDED"}
 TERMINAL_FAIL = {"FAILED", "TIMED-OUT", "ABORTED"}
 
-PRICE_PER_LEAD_USD = 0.002
+PRICE_PER_LEAD_USD = 0.004
 
 # Lead-tier helpers — match the actor's classify_lead_tier()
 TIER_THRESHOLDS = {"on-fire": 75, "hot": 55, "warm": 35, "cold": 0}
@@ -258,7 +258,7 @@ class LocalLeadFinderClient:
     def estimate_cost(self, lead_count: int) -> float:
         """Return the estimated USD cost for ``lead_count`` leads.
 
-        Pricing is $0.002 per lead ($2 / 1000). Enrichment is free.
+        Pricing is $0.004 per lead ($4 / 1000). Enrichment is free.
         """
         return round(lead_count * PRICE_PER_LEAD_USD, 4)
 
