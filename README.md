@@ -1,13 +1,13 @@
 # Local Lead Finder — Python SDK
 
-> **Find local businesses by category + location and get sales-ready leads with 30+ enrichment signals: lead score, website tech stack, real emails scraped from sites, normalised phone numbers, chain detection, brand age, mobile-friendliness, SEO audit, industry-specific outreach pitch — all for $2 per 1,000 leads.**
+> **Find local businesses by category + location and get sales-ready leads with 30+ enrichment signals: lead score, website tech stack, real emails scraped from sites, normalised phone numbers, chain detection, brand age, mobile-friendliness, SEO audit, industry-specific outreach pitch — all for $4 per 1,000 leads.**
 
-Python client for the [Local Lead Finder Apify Actor](https://apify.com/apivault_labs/local-business-lead-finder) — the most-used lead-gen tool in the apivault_labs catalogue. Built for web agencies, SEO teams, cold-outreach SDRs, and CRM imports.
+Python client for the [Local Lead Finder Pro Apify Actor](https://apify.com/apivault_labs/local-business-lead-finder) — the most-used lead-gen tool in the apivault_labs catalogue. Built for web agencies, SEO teams, cold-outreach SDRs, and CRM imports.
 
 [![Apify Actor](https://img.shields.io/badge/Apify-Actor-blue?logo=apify)](https://apify.com/apivault_labs/local-business-lead-finder)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Pricing](https://img.shields.io/badge/pricing-$2%20per%201,000-orange)](https://apify.com/apivault_labs/local-business-lead-finder)
+[![Pricing](https://img.shields.io/badge/pricing-$4%20per%201,000-orange)](https://apify.com/apivault_labs/local-business-lead-finder)
 
 ---
 
@@ -31,7 +31,7 @@ A direct, pay-per-use alternative to:
 - Generic local-data APIs ($99-$499/mo)
 - Apollo.io / ZoomInfo for hyper-local outreach
 
-**Pricing:** $2 per 1,000 leads ($0.002/lead). Enrichment is free — included in the per-result price.
+**Pricing:** $4 per 1,000 leads ($0.004/lead). Enrichment is free — included in the per-result price.
 
 ---
 
@@ -444,11 +444,11 @@ Pay only for what you find:
 
 | Volume | Cost |
 |---|---|
-| 100 leads | $0.20 |
-| 1,000 leads | $2.00 |
-| 10,000 leads | $20.00 |
+| 100 leads | $0.40 |
+| 1,000 leads | $4.00 |
+| 10,000 leads | $40.00 |
 
-Free Apify tier includes ~$5 monthly credit — that's **2,500 free leads per month**.
+Free Apify tier includes ~$5 monthly credit — that's **1,250 free leads per month**.
 
 All enrichment (website probing, email scraping, tech stack, mobile audit, SEO audit, brand age, outreach pitches) is **free** — included in the per-lead price.
 
