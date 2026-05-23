@@ -186,7 +186,13 @@ class LocalLeadFinderClient:
         run_id = self._start_run(payload, actor_timeout_secs=actor_timeout_secs)
         run = self._wait_for_run(run_id)
         records = self._fetch_dataset(run["defaultDatasetId"])
-        return self._split_summary(records)
+        leads, summary = self._split_summary(records)
+        # Newer actor builds (v2.3+) write the aggregate summary to the
+        # run's key-value store under 'SUMMARY' instead of pushing it
+        # into the dataset. Falls back gracefully when the key is absent.
+        if summary is None:
+            summary = self._fetch_summary_from_kvs(run.get("defaultKeyValueStoreId"))
+        return leads, summary
 
     def find_one_city(
         self,
@@ -268,7 +274,13 @@ class LocalLeadFinderClient:
     def _split_summary(
         records: list[dict[str, Any]],
     ) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
-        """Separate the aggregate `_summary` record from per-lead records."""
+        """Separate the aggregate `_summary` record from per-lead records.
+
+        Older actor builds (v2.0-v2.2) pushed the summary into the dataset
+        as a record with ``_summary: True``. v2.3+ writes it to the KV store
+        instead so it doesn't get charged as a dataset item — see
+        ``_fetch_summary_from_kvs``.
+        """
         leads: list[dict[str, Any]] = []
         summary: dict[str, Any] | None = None
         for rec in records:
@@ -277,6 +289,24 @@ class LocalLeadFinderClient:
             else:
                 leads.append(rec)
         return leads, summary
+
+    def _fetch_summary_from_kvs(self, kvs_id: str | None) -> dict[str, Any] | None:
+        """Pull the SUMMARY record from the run's default key-value store.
+        Returns None on any error so the caller can degrade gracefully."""
+        if not kvs_id:
+            return None
+        url = f"{self._base_url}/key-value-stores/{kvs_id}/records/SUMMARY"
+        try:
+            r = self._session.get(url, timeout=30)
+        except requests.RequestException:
+            return None
+        if r.status_code != 200:
+            return None
+        try:
+            data = r.json()
+        except ValueError:
+            return None
+        return data if isinstance(data, dict) else None
 
     def _start_run(self, payload: dict[str, Any], actor_timeout_secs: int) -> str:
         url = f"{self._base_url}/acts/{ACTOR_ID}/runs"
