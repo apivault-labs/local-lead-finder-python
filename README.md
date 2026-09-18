@@ -99,7 +99,7 @@ Requires Python 3.9+ and the [`requests`](https://pypi.org/project/requests/) li
 3. Copy your Personal API token
 
 ```bash
-export APIFY_API_TOKEN=apify_api_xxxxxxxxxxxxxxxxxxxxxxxx
+export APIFY_API_TOKEN=YOUR_APIFY_TOKEN
 ```
 
 Or pass it explicitly:
@@ -457,7 +457,7 @@ All enrichment (website probing, email scraping, tech stack, mobile audit, SEO a
 ## How it works
 
 1. Builds a YellowPages search URL from `category` + `location`
-2. Scrapes 1–10 pages in parallel via Thunderbit (handles anti-bot)
+2. Processes the requested pages inside the hosted Actor
 3. Deduplicates by name + phone
 4. For every lead with a website, runs a HEAD/GET probe:
    - Tech-stack pattern matching (12 platforms)
